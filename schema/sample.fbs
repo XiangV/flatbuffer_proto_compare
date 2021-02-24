@@ -1,0 +1,18 @@
+namespace xiangv.sample;
+
+enum DBAccessType:byte { Get = 0, Put }
+
+struct ClientUniqID {
+  ip: int32;
+  id: uint64;
+}
+
+table ClientReport {
+  uid : ClientUniqID;
+  type : DBAccessType = Get;
+  info : string;
+  count : int32;
+  cost : int32;
+}
+
+root_type ClientReport;

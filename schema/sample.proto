@@ -1,0 +1,18 @@
+package xiangv.sample
+
+enum DBAccessType {
+  Get = 0;
+  Put;
+};
+
+message ClientUniqID {
+  required bytes ip;
+  required uint64 id;
+};
+
+message ClientReport {
+  optional ClientUniqID uid;
+  required DBAccessType type;
+  required int32 count;
+  required int32 cost;
+};
