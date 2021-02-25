@@ -1,0 +1,13 @@
+namespace xiangv.sample;
+
+struct StructSample {
+  f1 : int32;
+  f2 : int64;
+}
+
+table TableSample {
+  str_field: string;
+  struct_field: StructSample;
+}
+
+root_type TableSample;

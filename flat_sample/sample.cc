@@ -9,13 +9,15 @@ int main() {
     auto uid = ClientUniqID(489, 1086);
     auto builder = ClientReportBuilder(fbb);
     builder.add_count(108);
-    builder.add_type(DBAccessType::Get);
+    builder.add_type(DBAccessType::DBAccessType_Get);
     builder.add_cost(11000);
     builder.add_uid(&uid);
-    builder.add_info("sample");
+    builder.add_info(fbb.CreateString("sample"));
     auto client_report = builder.Finish();
-    char* result = fbb.GetBufferPointer();
-    uint32_t size = fbb.GetSize();
+    fbb.Finish(client_report);
+    auto detached_buffer = fbb.Release();
+    // auto result = fbb.GetBufferPointer();
+    // uint32_t size = fbb.GetSize();
   }
 
   {

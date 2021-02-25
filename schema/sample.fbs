@@ -2,15 +2,23 @@ namespace xiangv.sample;
 
 enum DBAccessType:byte { Get = 0, Put }
 
+// only scalar type or struct
 struct ClientUniqID {
   ip: int32;
   id: uint64;
+}
+
+table NameInfo {
+  x: int32;
+  info : string;
 }
 
 table ClientReport {
   uid : ClientUniqID;
   type : DBAccessType = Get;
   info : string;
+  name : NameInfo;
+  names : [NameInfo];
   count : int32;
   cost : int32;
 }
